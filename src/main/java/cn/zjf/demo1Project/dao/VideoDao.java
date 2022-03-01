@@ -1,5 +1,6 @@
 package cn.zjf.demo1Project.dao;
 
+import cn.zjf.demo1Project.domain.User;
 import cn.zjf.demo1Project.domain.Video;
 import org.springframework.stereotype.Repository;
 

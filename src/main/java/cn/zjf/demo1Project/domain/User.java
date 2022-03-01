@@ -1,5 +1,7 @@
 package cn.zjf.demo1Project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author OneBird
  * @date 2022/2/28 18:06
@@ -7,6 +9,7 @@ package cn.zjf.demo1Project.domain;
 public class User {
     private int id;
     private String username;
+    @JsonIgnore
     private String pwd;
 
     public User(int id, String username, String pwd) {
