@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User {
     private int id;
     private String username;
-    @JsonIgnore
+//    @JsonIgnore
     private String pwd;
 
     public User(int id, String username, String pwd) {

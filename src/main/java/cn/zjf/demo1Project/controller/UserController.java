@@ -1,12 +1,10 @@
 package cn.zjf.demo1Project.controller;
 
+import cn.zjf.demo1Project.domain.User;
 import cn.zjf.demo1Project.service.UserService;
 import cn.zjf.demo1Project.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author OneBird
@@ -20,14 +18,19 @@ public class UserController {
     public UserService userService;
 
     @PostMapping("/login")
-    public JsonData login(String username, String pwd){
-        System.out.println("username="+username+" pwd="+pwd);
-        return JsonData.buildSuccess("");
+    public JsonData login(@RequestBody User user){
+        System.out.println("user=" + user.toString());
+        String token = userService.login(user.getUsername(), user.getPwd());
+        return token !=null ? JsonData.buildSuccess(token) : JsonData.buildError("账号密码错误");
+//    public JsonData login(String username, String pwd){
+//        User user = new User();
+//        user.setPwd(pwd);
+//        user.setUsername(username);
+//        String s = userService.login(username, pwd);
+//        return JsonData.buildSuccess(s);
     }
     @GetMapping("list")
     public JsonData listUser(){
-        System.out.println(1234);
-        System.out.println(569);
         return JsonData.buildSuccess(userService.userList());
     }
 }

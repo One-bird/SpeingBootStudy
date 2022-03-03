@@ -24,14 +24,14 @@ public class UserDao {
     }
 
     public User login(String username, String pwd){
-        User users = userDao.get(username);
-        if (userDao == null){
-            return null;
-        }else if (users.getPwd().equals(pwd)){
-            return users;
-        }else {
+        User user = userDao.get(username);
+        if (user == null){
             return null;
         }
+        if (user.getPwd().equals(pwd)){
+            return user;
+        }
+        return null;
     }
 
     public List<User> userListr(){
