@@ -26,6 +26,9 @@ public class JsonData {
     public static JsonData buildError(String msg){
         return new JsonData(-1,"",msg);
     }
+    public static JsonData buildError(String msg, int code){
+        return new JsonData(code,"",msg);
+    }
 
     public int getCode() {
         return code;
